@@ -8,6 +8,11 @@
     refcounting issues when used on light-weight (error-only) topic objects
     such as consumer errors (#2693)
 
+### Consumer fixes
+
+ * The C++ `KafkaConsumer` destructor did not destroy the underlying
+   C `rd_kafka_t` instance, causing a leak if `close()` was not used.
+
 
 # librdkafka v1.5.0
 

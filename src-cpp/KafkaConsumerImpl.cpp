@@ -251,6 +251,7 @@ RdKafka::KafkaConsumerImpl::close () {
   while (rd_kafka_outq_len(rk_) > 0)
     rd_kafka_poll(rk_, 10);
   rd_kafka_destroy(rk_);
+  rk_ = NULL;
 
   return static_cast<RdKafka::ErrorCode>(err);
 }

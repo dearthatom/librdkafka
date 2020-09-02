@@ -1103,7 +1103,8 @@ class ConsumerGroupMetadataImpl : public ConsumerGroupMetadata {
 class KafkaConsumerImpl : virtual public KafkaConsumer, virtual public HandleImpl {
 public:
   ~KafkaConsumerImpl () {
-
+    if (rk_)
+      rd_kafka_destroy(rk_);
   }
 
   static KafkaConsumer *create (Conf *conf, std::string &errstr);
